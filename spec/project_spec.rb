@@ -30,3 +30,9 @@ end
   end
 end
 
+  context ".all" do 
+    it "is empty" do 
+      expect(Project.all).to(eq([]))
+    end
+  end
+  
