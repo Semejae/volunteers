@@ -60,3 +60,17 @@ class Project
   def self.clear
     DB.exec("DELETE FROM projects *;")
   end
+
+  def self.search(str)
+    result = DB.exec("SELECT * FROM projects WHERE title ILIKE '%#{str}%';")
+    projects = []
+    result.each() do |project|
+      title = project.fetch("title")
+      id = project.fetch("id").to_i
+      projects.push(Project.new({:title => title, :id => id}))
+    end
+    if project.any?
+      projects
+    end
+  end
+end
