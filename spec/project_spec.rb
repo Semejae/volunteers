@@ -51,3 +51,12 @@ end
     expect(Project.all).to(eq([project]))
   end
 end
+
+  describe ".find" do 
+    it "return project by id" do 
+      project1 = Project.new({:title => "humpty dumpty", :id =>
+    nil})
+      project1.save()
+      project2 = Project.new({:title => "BIG FOOT", :id => nil})
+      project2.save()
+      expect(Project.find(project1.id)).to(eq(project1))
