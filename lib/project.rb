@@ -7,4 +7,7 @@ class Project
     @id = attributes.fetch(:id)
   end
 
+  def ==(project_to_compare)
+    self.title() == project_to_compare.title()
+  end
   
