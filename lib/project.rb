@@ -37,4 +37,11 @@ class Project
       nil
     end
   end
+
+  def volunteer 
+    find = Volunteer.find_by_project(self.id)
+    if find.any?
+      find
+    end
+  end
   
