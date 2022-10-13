@@ -60,3 +60,17 @@ end
       project2 = Project.new({:title => "BIG FOOT", :id => nil})
       project2.save()
       expect(Project.find(project1.id)).to(eq(project1))
+    end
+  end
+
+  describe "#volunteer" do 
+  it "returns all volunteers for project" do
+    project = Project.new({:title => "humpty dumpty", :id => nil})
+    project1.save()
+    volunteer1 = Volunteer.new({:volunteer => "Anthony", :project_id => project.id, :id => nil})
+    volunteer1.save()
+    volunteer2 = Volunteer.new({:volunteer => "Kacie", :project_id => project.id, :id => nil})
+    volunteer2.save()
+    expect(project.volunteers).to(eq([volunteer1,volunteer2]))
+  end
+end
