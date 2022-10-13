@@ -93,3 +93,13 @@ describe "#delete" do
   end
 end
 
+describe ".clear" do 
+  it "clear all projects" do 
+    project = Project.new({:title => "humpty dumpty", :id => nil})
+    project.save()
+    project2 = Project.new({:title => "BIG FOOT", :id => nil})
+    project2.save()
+    Project.clear()
+    expect(Project.all).to(eq([]))
+  end
+end
