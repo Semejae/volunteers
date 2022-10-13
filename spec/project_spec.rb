@@ -84,3 +84,12 @@ describe "#update" do
   end
 end
 
+describe "#delete" do 
+  it "allows user to delete" do
+    project = Project.new({:title => 'humpty dumpty', :id => nil})
+    project.save()
+    project.delete()
+    expect(Project.all).to(eq([]))
+  end
+end
+
