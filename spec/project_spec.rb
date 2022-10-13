@@ -44,7 +44,7 @@ end
     expect(Project.all).to(eq([project1,project2]))
   end
 
-  describe "#save" do 
+describe "#save" do 
   it "saves a project to database" do 
     project = Project.new({:title => "humpty dumpty", :id => nil})
     project.save()
@@ -52,18 +52,18 @@ end
   end
 end
 
-  describe ".find" do 
-    it "return project by id" do 
-      project1 = Project.new({:title => "humpty dumpty", :id =>
+describe ".find" do 
+  it "return project by id" do 
+    project1 = Project.new({:title => "humpty dumpty", :id =>
     nil})
-      project1.save()
-      project2 = Project.new({:title => "BIG FOOT", :id => nil})
-      project2.save()
-      expect(Project.find(project1.id)).to(eq(project1))
-    end
+    project1.save()
+    project2 = Project.new({:title => "BIG FOOT", :id => nil})
+    project2.save()
+    expect(Project.find(project1.id)).to(eq(project1))
   end
+end
 
-  describe "#volunteer" do 
+describe "#volunteer" do 
   it "returns all volunteers for project" do
     project = Project.new({:title => "humpty dumpty", :id => nil})
     project1.save()
@@ -74,3 +74,13 @@ end
     expect(project.volunteers).to(eq([volunteer1,volunteer2]))
   end
 end
+
+describe "#update" do 
+  it "allows user to update" do 
+    project = Project.new({:title => "humpty dumpty", :id => nil})
+    project.save()
+    project.update({:title => "humpty dumpty", :id => nil})
+    expect(project.title).to(eq("humpty dumpty"))
+  end
+end
+
