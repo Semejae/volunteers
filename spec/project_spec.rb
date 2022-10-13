@@ -39,7 +39,15 @@ end
   it "returned all projects" do 
     project1 = Project.new({:title => "humpty dumpty", :id => nil})
     project1.save()
-    project2 = Project.new({:title => 'BIG FOOT', :id => nil})
+    project2 = Project.new({:title => "BIG FOOT", :id => nil})
     project2.save()
     expect(Project.all).to(eq([project1,project2]))
   end
+
+  describe "#save" do 
+  it "saves a project to database" do 
+    project = Project.new({:title => "humpty dumpty", :id => nil})
+    project.save()
+    expect(Project.all).to(eq([project]))
+  end
+end
