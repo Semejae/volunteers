@@ -103,3 +103,16 @@ describe ".clear" do
     expect(Project.all).to(eq([]))
   end
 end
+
+describe ".search" do 
+  it "serch for project by title" do 
+    project= Project.new({:title => "humpty dumpty", :id => nil})
+    project.save()
+    project2 = Project.new({:title => "BIG FOOT", :id => nil})
+    project2.save()
+    project3 = Project.new({:title => "toy story", :id => nil})
+    expect(Project.search("humpty dumpty")).to(eq([project]))
+  end
+end
+
+end
