@@ -38,11 +38,11 @@ end
 
   it "returns all volunteers" do 
     project = Project.new({:title => "humpty dumpty", :id => nil})
-    project.save
+    project.save()
     volunteer1 = Volunteer.new({:volunteer => "Anthony", :project_id => @project_id, :id => nil})
-    volunteer1.save
+    volunteer1.save()
     volunteer2 = Volunteer.new({:volunteer => "Kacie", :project_id => @project_id, :id => nil})
-    volunteer2.save
+    volunteer2.save()
     expect(Volunteer.all).to(eq([volunteer1,volunteer2]))
   end
 end
@@ -52,5 +52,15 @@ describe "#save" do
     vol = Volunteer.new({:volunteer => "Anthony", :project_id => 1, :id => nil})
     vol.save()
     expect(Volunteer.all).to(eq([vol]))
+  end
+end
+
+describe ".find" do
+  it "return volunteer by id" do 
+    volunteer1 = Volunteer.new({:volunteer => "Anthony", :project_id => 1, :id => nil})
+    volunteer1.save()
+    volunteer2 = Volunteer.new({:volunteer => "Kacie", :project_id => 1, :id => nil})
+    volunteer2.save()
+    expect(Volunteer.find(volunteer1.id)).to(eq(volunteer1))
   end
 end
