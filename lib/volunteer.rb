@@ -20,4 +20,14 @@ class Volunteer
     end
   end
 
+  def self.all
+    returned_volunteers = DB.exec("SELECT * FROM volunteers;")
+    vol = []
+    returned_volunteers.each() do |teer| 
+      name = teer.fetch("volunteer")
+      project_id = teer.fetch("project_id").to_i
+      vol.push(Volunteer.new({:volunteer => name, :project_id => project_id, :id => id}))
+    end
+    vol
+  end
   
