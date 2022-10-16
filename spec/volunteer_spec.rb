@@ -97,3 +97,10 @@ describe "#delete" do
   end
 end
 
+describe "#project" do 
+  it "finds the project a volunteer belongs to" do
+    volunteer = Volunteer.new({:volunteer => "Anthony", :project_id => 1, :id => nil})
+    volunteer.save()
+    expect(volunteer.project()).to(eq(@project))
+  end
+end
