@@ -35,3 +35,22 @@ context ".all" do
     expect(Volunteer.all).to(eq([]))
   end
 end
+
+  it "returns all volunteers" do 
+    project = Project.new({:title => "humpty dumpty", :id => nil})
+    project.save
+    volunteer1 = Volunteer.new({:volunteer => "Anthony", :project_id => @project_id, :id => nil})
+    volunteer1.save
+    volunteer2 = Volunteer.new({:volunteer => "Kacie", :project_id => @project_id, :id => nil})
+    volunteer2.save
+    expect(Volunteer.all).to(eq([volunteer1,volunteer2]))
+  end
+end
+
+describe "#save" do 
+  it "save a volunteer to project" do 
+    vol = Volunteer.new({:volunteer => "Anthony", :project_id => 1, :id => nil})
+    vol.save()
+    expect(Volunteer.all).to(eq([vol]))
+  end
+end
