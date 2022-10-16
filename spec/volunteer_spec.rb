@@ -86,3 +86,14 @@ describe "#update" do
   end
 end
 
+describe "#delete" do
+  it "allows user to delete volunteer by id" do 
+    volunteer1 = Volunteer.new({:volunteer => "Anthony", :project_id => 1, :id => nil})
+    volunteer1.save()
+    volunteer2 = Volunteer.new({:volunteer => "Kacie", :project_id => 1, :id => nil})
+    volunteer2.save()
+    volunteer1.delete()
+    expect(Volunteer.all).to(eq([volunteer2]))
+  end
+end
+
