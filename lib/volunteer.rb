@@ -48,4 +48,14 @@ class Volunteer
     end
   end
 
+  def self.find_by_project(pjct_id)
+    vol = []
+    returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{pjct_id};")
+    returned_volunteers.each() do |teer|
+      name = teer.fetch("volunteer")
+      id = teer.fetch("id").to_i
+      vol.push(Volunteer.new({:volunteer => name, :project_id=> pjct_id, :id => id}))
+    end
+    vol
+  end
   
