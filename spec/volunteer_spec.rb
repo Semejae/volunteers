@@ -29,3 +29,9 @@ describe "#==" do
     expect(volunteer1 == volunteer1).to(eq(true))
   end
 end
+
+context ".all" do 
+  it "is empty" do 
+    expect(Volunteer.all).to(eq([]))
+  end
+end
