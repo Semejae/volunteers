@@ -64,3 +64,16 @@ describe ".find" do
     expect(Volunteer.find(volunteer1.id)).to(eq(volunteer1))
   end
 end
+
+describe ".find_by_project" do
+  it "finds volunteers for project" do 
+    project = Project.new({:title => "humpty dumpty", :id => nil})
+    project.save()
+    volunteer1 = Volunteer.new({:volunteer => "Anthony", :project_id => 1, :id => nil})
+    volunteer1.save()
+    volunteer2 = Volunteer.new({:volunteer => "Kacie", :project_id => 1, :id => nil})
+    volunteer2.save()
+    expect(Volunteer.find_by_project(1)).to(eq([volunteer1,volunteer2]))
+  end
+end
+
