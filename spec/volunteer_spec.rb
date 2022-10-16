@@ -14,3 +14,10 @@ describe "#name" do
     expect(practice_volunteer.volunteer).to(eq("Anthony"))
   end
 end
+
+describe "#project_id" do 
+  it "returns volunteer project_id" do 
+    volunteer = Volunteer.new({:volunteer => "Anthony", :project_id => 1, :id => nil})
+    expect(volunteer.project_id).to(eq(1))
+  end
+end
