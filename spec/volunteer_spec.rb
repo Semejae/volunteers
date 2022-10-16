@@ -77,3 +77,12 @@ describe ".find_by_project" do
   end
 end
 
+describe "#update" do 
+  it "update a volunteer id" do 
+    volunteer = Volunteer.new({:volunteer => "Anthony", :project_id => 1, :id => nil})
+    volunteer.save()
+    volunteer.update("humpty lumpty", 1)
+    expect(volunteer.volunteer).to(eq('humpty lumpty'))
+  end
+end
+
