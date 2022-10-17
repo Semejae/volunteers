@@ -104,3 +104,16 @@ describe "#project" do
     expect(volunteer.project()).to(eq(@project))
   end
 end
+
+describe ".clear" do
+  it "clear all volunteers" do
+    volunteer = Volunteer.new({:volunteer => "Anthony", :project_id => 1, :id => nil})
+    volunteer1.save()
+    volunteer2 = Volunteer.new({:volunteer => "Kacie", :project_id => 1, :id => nil})
+    volunteer2.save()
+    Volunteer.clear()
+    expect(Volunteer.all).to(eq([]))
+  end
+end
+
+
