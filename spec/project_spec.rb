@@ -12,7 +12,6 @@ end
   context "#id" do 
   it "returns id before saving" do 
     project = Project.new({:title => "humpty dumpty", :id => nil})
-    project.save()
     expect(project.id).to(eq(nil))
   end
 
