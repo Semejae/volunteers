@@ -54,6 +54,11 @@ delete('/projects/:id') do
   erb(:projects)
 end
 
+# get('/projects/:id/volunteers/:volunteer_id') do
+#   @volunteer = Volunteer.find(params[:volunteer_id])
+#   erb(:volunteer)
+# end
+
 post('/projects/:id/volunteer') do
   @project = Project.find(params[:id].to_i())
   volunteer = Volunteer.new({:volunteer => params[:volunteer_name], :project_id => @project.id, :id => nil})
