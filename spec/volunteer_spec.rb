@@ -39,9 +39,9 @@ end
   it "returns all volunteers" do 
     project = Project.new({:title => "humpty dumpty", :id => nil})
     project.save()
-    volunteer1 = Volunteer.new({:volunteer => "Anthony", :project_id => @project_id, :id => nil})
+    volunteer1 = Volunteer.new({:volunteer => "Anthony", :project_id => project.id, :id => nil})
     volunteer1.save()
-    volunteer2 = Volunteer.new({:volunteer => "Kacie", :project_id => @project_id, :id => nil})
+    volunteer2 = Volunteer.new({:volunteer => "Kacie", :project_id => project.id, :id => nil})
     volunteer2.save()
     expect(Volunteer.all).to(eq([volunteer1,volunteer2]))
   end

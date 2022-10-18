@@ -63,14 +63,14 @@ describe ".find" do
 end
 
 describe "#volunteer" do 
-  it "returns all volunteers for project" do
+  it "returns all volunteers for a project" do
     project = Project.new({:title => "humpty dumpty", :id => nil})
     project.save()
-    volunteer1 = Volunteer.new({:name => "Anthony", :project_id => project.id, :id => nil})
+    volunteer1 = Volunteer.new({:volunteer => "Anthony", :project_id => project.id, :id => nil})
     volunteer1.save()
-    volunteer2 = Volunteer.new({:name => "Kacie", :project_id => project.id, :id => nil})
+    volunteer2 = Volunteer.new({:volunteer => "Kacie", :project_id => project.id, :id => nil})
     volunteer2.save()
-    expect(project.volunteers).to(eq([volunteer1,volunteer2]))
+    expect(project.volunteer).to(eq([volunteer1,volunteer2]))
   end
 end
 

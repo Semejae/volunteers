@@ -6,7 +6,7 @@ require('pry')
 require('./lib/volunteer')
 also_reload('lib/**/*.rb')
 
-# DB = PG.connect({:dbname => "volunteer_tracker"})  
+DB = PG.connect({:dbname => "volunteer_tracker"})  
 
 get('/') do
   @projects = Project.all
@@ -56,7 +56,8 @@ end
 
 post('/projects/:id/volunteer') do
   @project = Project.find(params[:id].to_i())
-  volunteer = Volunteer.new(params[:volunteer_name], @project.id, nil)
+  volunteer = Volunteer.new({:volunteer => params[:volunteer_name], :project_id => @project.id, :id => nil})
+  # test_volunteer = Volunteer.new({:volunteer => 'Anthony', :project_id => project_id, :id => nil})
   volunteer.save()
   erb(:project)
 end

@@ -52,7 +52,7 @@ describe 'the volunteer detail page path', {:type => :feature} do
     test_project = Project.new({:title => 'humpty dumpty', :id => nil})
     test_project.save
     project_id = test_project.id.to_i
-    test_volunteer = Volunteer.new({:name => 'Anthony', :project_id => project_id, :id => nil})
+    test_volunteer = Volunteer.new({:volunteer => 'Anthony', :project_id => project_id, :id => nil})
     test_volunteer.save
     visit "/projects/#{project_id}"
     expect(page).to have_content('Anthony')

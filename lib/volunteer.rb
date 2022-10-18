@@ -6,7 +6,7 @@ class Volunteer
   attr_reader :id
   attr_accessor :volunteer, :project_id
 
-  def initalize(attributes)
+  def initialize(attributes)
     @id = attributes.fetch(:id)
     @volunteer = attributes.fetch(:volunteer)
     @project_id = attributes.fetch(:project_id)
@@ -26,6 +26,7 @@ class Volunteer
     returned_volunteers.each() do |teer| 
       name = teer.fetch("volunteer")
       project_id = teer.fetch("project_id").to_i
+      id = teer.fetch("id").to_i
       vol.push(Volunteer.new({:volunteer => name, :project_id => project_id, :id => id}))
     end
     vol
