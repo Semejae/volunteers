@@ -15,9 +15,9 @@ class Project
     returned_projects = DB.exec("SELECT * FROM projects;")
     projects = []
     returned_projects.each() do |project|
-      title = project.fetch("title")
-      id = project.fetch("id").to_i
-      project.push(Project.new({:title => title, :id => id}))
+      title = projects.fetch("title")
+      id = projects.fetch("id").to_i
+      projects.push(Project.new({:title => title, :id => id}))
     end
     projects
   end
@@ -46,7 +46,7 @@ class Project
   end
 
   def update(attributes)
-    if(attributes.hey_key?(:title)) && (attributes.fetch(:title) != nil)
+    if(attributes.has_key?(:title)) && (attributes.fetch(:title) != nil)
       @title = attributes.fetch(:title)
       DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
     end
@@ -54,7 +54,7 @@ class Project
 
   def delete 
     DB.exec("DELETE FROM projects WHERE id = #{@id};")
-    DB.exec("DELETE FROM volunteer WHERE project_id = #{@id};")
+    DB.exec("DELETE FROM volunteers WHERE project_id = #{@id};")
   end
 
   def self.clear
@@ -69,7 +69,7 @@ class Project
       id = project.fetch("id").to_i
       projects.push(Project.new({:title => title, :id => id}))
     end
-    if project.any?
+    if projects.any?
       projects
     end
   end
