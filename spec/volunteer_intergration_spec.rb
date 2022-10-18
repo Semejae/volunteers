@@ -10,9 +10,9 @@ describe 'the project creation path', {:type => :feature} do
   it 'takes the user to the homepage where they can create a project' do
     visit '/'
     click_on('Add a new project')
-    fill_in('project_name', :with => 'Teaching Kids to Code')
+    fill_in('project_name', :with => 'humpty dumpty')
     click_button('Create Project')
-    expect(page).to have_content('Teaching Kids to Code')
+    expect(page).to have_content('humpty dumpty')
   end
 end
 
@@ -20,14 +20,14 @@ end
 
 describe 'the project update path', {:type => :feature} do
   it 'allows a user to change the name of the project' do
-    test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+    test_project = Project.new({:title => 'humpty dumpty', :id => nil})
     test_project.save
     visit '/'
-    click_link('Teaching Kids to Code')
+    click_link('humpty dumpty')
     click_link('Edit Project')
-    fill_in('title', :with => 'Teaching Ruby to Kids')
+    fill_in('title', :with => 'humpty dumpty')
     click_button('Update Project')
-    expect(page).to have_content('Teaching Ruby to Kids')
+    expect(page).to have_content('humpty dumpty')
   end
 end
 
@@ -35,13 +35,13 @@ end
 
 describe 'the project delete path', {:type => :feature} do
   it 'allows a user to delete a project' do
-    test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+    test_project = Project.new({:title => 'humpty dumpty', :id => nil})
     test_project.save
     id = test_project.id
     visit "/projects/#{id}/edit"
     click_button('Delete Project')
     visit '/'
-    expect(page).not_to have_content("Teaching Kids to Code")
+    expect(page).not_to have_content("humpty dumpty")
   end
 end
 
@@ -49,12 +49,12 @@ end
 
 describe 'the volunteer detail page path', {:type => :feature} do
   it 'shows a volunteer detail page' do
-    test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+    test_project = Project.new({:title => 'humpty dumpty', :id => nil})
     test_project.save
     project_id = test_project.id.to_i
-    test_volunteer = Volunteer.new({:name => 'Jasmine', :project_id => project_id, :id => nil})
+    test_volunteer = Volunteer.new({:name => 'Anthony', :project_id => project_id, :id => nil})
     test_volunteer.save
     visit "/projects/#{project_id}"
-    expect(page).to have_content('Jasmine')
+    expect(page).to have_content('Anthony')
   end
 end

@@ -26,7 +26,7 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.projects (
     id integer NOT NULL,
-    name character varying
+    title character varying
 );
 
 
@@ -60,8 +60,8 @@ ALTER SEQUENCE public.projects_id_seq OWNED BY public.projects.id;
 
 CREATE TABLE public.volunteers (
     id integer NOT NULL,
-    name character varying,
-    project_id integer
+    project_id integer,
+    volunteer character varying
 );
 
 
@@ -107,7 +107,7 @@ ALTER TABLE ONLY public.volunteers ALTER COLUMN id SET DEFAULT nextval('public.v
 -- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: aglad
 --
 
-COPY public.projects (id, name) FROM stdin;
+COPY public.projects (id, title) FROM stdin;
 \.
 
 
@@ -115,7 +115,7 @@ COPY public.projects (id, name) FROM stdin;
 -- Data for Name: volunteers; Type: TABLE DATA; Schema: public; Owner: aglad
 --
 
-COPY public.volunteers (id, name, project_id) FROM stdin;
+COPY public.volunteers (id, project_id, volunteer) FROM stdin;
 \.
 
 
@@ -123,7 +123,7 @@ COPY public.volunteers (id, name, project_id) FROM stdin;
 -- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aglad
 --
 
-SELECT pg_catalog.setval('public.projects_id_seq', 1, false);
+SELECT pg_catalog.setval('public.projects_id_seq', 398, true);
 
 
 --
